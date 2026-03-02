@@ -167,7 +167,7 @@ async def chat():
 async def list_threads():
     # data = await request.get_json()
     # user_id = data.get("user_id")
-    user_id = request.get("user_id")
+    user_id = request.args.get("user_id")
 
     async with AsyncSessionLocal() as session:
         threads = await get_user_threads(session, user_id)
@@ -247,7 +247,7 @@ async def delete_thread(thread_id):
 async def list_messages(thread_id):
     # data = await request.get_json()
     # user_id = data.get("user_id")
-    user_id = request.get("user_id")
+    user_id = request.args.get("user_id")
     
     if not user_id:
         return jsonify({"error:" "User ID is required."}), 400
