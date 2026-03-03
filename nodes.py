@@ -161,7 +161,7 @@ def publish_post(idimages_arg: List[str], content_arg: str, date_arg: str, time_
         }
 
 @tool
-def edit_post(iddraft_arg: str, idimages_arg: str, content_arg: str, date_arg: str, time_arg: str, preserve_current_post_arg: str):
+def edit_post(iddraft_arg: List[str], idimages_arg: str, content_arg: str, date_arg: str, time_arg: str, preserve_current_post_arg: str):
     """
         Edit an existing scheduled post.
 
