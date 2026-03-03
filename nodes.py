@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from typing import List
+from typing import List, Optional
 
 from state import AgentState
 from llm_provider import call_llm
@@ -126,7 +126,7 @@ def save_draft(idimages_arg: List[str], content_arg: str, date_arg: str, time_ar
         }
 
 @tool
-def publish_post(idimages_arg: List[str], content_arg: str, date_arg: str, time_arg: str):
+def publish_post(idimages_arg: List[str], content_arg: str, date_arg: str, time_arg: str, idreel_arg: Optional[str] = None):
     """
         Publish or schedule post to the user's social media accounts at a specific date and time.
 
@@ -152,6 +152,7 @@ def publish_post(idimages_arg: List[str], content_arg: str, date_arg: str, time_
                     "name": "publish_post",
                     "arguments": {
                         "idimages": idimages_arg,
+                        "idreel": idreel_arg,
                         "content": content_arg,
                         "date": date_arg,
                         "time": time_arg
@@ -161,7 +162,7 @@ def publish_post(idimages_arg: List[str], content_arg: str, date_arg: str, time_
         }
 
 @tool
-def edit_post(iddraft_arg: List[str], idimages_arg: str, content_arg: str, date_arg: str, time_arg: str, preserve_current_post_arg: str):
+def edit_post(iddraft_arg: List[str], idimages_arg: str, content_arg: str, date_arg: str, time_arg: str, preserve_current_post_arg: str, idreel_arg: Optional[str] = None):
     """
         Edit an existing scheduled post.
 
@@ -195,6 +196,7 @@ def edit_post(iddraft_arg: List[str], idimages_arg: str, content_arg: str, date_
                     "arguments": {
                         "iddraft": iddraft_arg,
                         "idimage": idimages_arg,
+                        "idreel": idreel_arg,
                         "content": content_arg,
                         "date": date_arg,
                         "time": time_arg,
